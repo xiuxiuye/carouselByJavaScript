@@ -51,6 +51,7 @@ html, body{
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 
 .caroucel-container ul li{
@@ -63,4 +64,25 @@ html, body{
 .caroucel-container img{
     width: 100%;
     height: 100%;
+}
+.caroucel-container div{
+    position: absolute;
+    z-index: 10;
+    font-size: 80px;
+    background-color: darkgray;
+    opacity: 0.5;
+    top: 50%;
+    cursor: pointer;
+    display: none;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.caroucel-container>div:first-child{
+    left: 0;
+}
+.caroucel-container>div:last-child{
+    right: 0;
 }
