@@ -16,8 +16,8 @@ html, body{
 }
 
 .caroucel-container{
-    width: 1020px;
-    height: 50vh;
+    width: 1000px;
+    height: 60vh;
     background-color: blanchedalmond;
     position: absolute;
     overflow: hidden;
@@ -30,23 +30,9 @@ html, body{
     -o-transform: translate(-50%, -50%);
 }
 
-.tag{
-    width: 1020px;
-    height: 30px;
-    background-color: red;
-    position: absolute;
-    left: 50%;
-    top: 210px;
-    transform: translate(-50%, 0);
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -ms-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-}
-
-.caroucel-container ul{
-    width: 6120px;
-    height: 50vh;
+#ul{
+    width: 6000px;
+    height: 60vh;
     list-style-type: none;
     position: absolute;
     top: 0;
@@ -54,11 +40,39 @@ html, body{
     z-index: 1;
 }
 
-.caroucel-container ul li{
-    width: 1020px;
-    height: 50vh;
+#indexBox{
+    list-style-type: none;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    z-index: 10;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+
+
+#ul>li{
+    width: 1000px;
+    height: 60vh;
     float: left;
     overflow: hidden;
+}
+
+#indexBox>li{
+    width: 18px;
+    height: 18px;
+    float: left;
+    background-color: #c5c8ce;
+    border-radius: 100%;
+    margin-right: 10px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
 }
 
 .caroucel-container img{
@@ -80,6 +94,7 @@ html, body{
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
 }
+
 .caroucel-container>div:first-child{
     left: 0;
 }

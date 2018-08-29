@@ -8,6 +8,7 @@ let imgIndex = 0;
 console.log("imgWidth="+imgWidth);
 let autoPlayInterval;
 let animate_interval;
+let isDisabled = false; //防止用户过快的连续点击
 
 //初始化函数
 function initCaroucel(){
@@ -27,8 +28,9 @@ function autoPlay(ul){
         }else{
             imgIndex += 1;
         }
+        setBg();
         console.log(imgIndex);
-    },5000);
+    },3000);
 }
 //移除节点
 function removeNode(ul){
@@ -38,6 +40,20 @@ function removeNode(ul){
 function appendNode(ul){
     let cloneNode = ul.children[0].cloneNode(true);
     ul.appendChild(cloneNode);
+}
+
+//设置索引原点背景颜色
+function setBg() {
+    let children = document.getElementById("indexBox").children
+    for(let i=0; i<children.length; i++){
+        children[i].style.backgroundColor = "#c5c8ce";
+    }
+    if(imgIndex==5){
+        children[0].style.backgroundColor = "#2db7f5";
+    }else{
+        children[imgIndex].style.backgroundColor = "#2db7f5";
+    }
+    
 }
 
 function animate(ele){
@@ -64,20 +80,36 @@ function animate(ele){
 }
 
 function preImage() {
-    direction = "right";
-    let ul = document.getElementById('ul');
-    animate(ul);
-    imgIndex -= 1;
-    direction = DIRECTION; //重置为从右向左的切换
-    autoPlay(ul);
+    if(!isDisabled){
+        isDisabled = true;
+        direction = "right";
+        let ul = document.getElementById('ul');
+        animate(ul);
+        imgIndex -= 1;
+        setBg();
+        direction = DIRECTION; //重置为从右向左的切换
+        autoPlay(ul);
+        let timeOut = setTimeout(()=>{
+            isDisabled = false;
+            clearTimeout(timeOut);
+        },500);
+    }
 }
 function nextImage() {
-    direction = "left";
-    let ul = document.getElementById('ul');
-    animate(ul);
-    imgIndex += 1;
-    direction = DIRECTION; //重置为从右向左的切换
-    autoPlay(ul);
+    if(!isDisabled){
+        isDisabled = true;
+        direction = "left";
+        let ul = document.getElementById('ul');
+        animate(ul);
+        imgIndex += 1;
+        setBg();
+        direction = DIRECTION; //重置为从右向左的切换
+        autoPlay(ul);
+        let timeOut = setTimeout(()=>{
+            isDisabled = false;
+            clearTimeout(timeOut);
+        },500);
+    }
 }
 
 
