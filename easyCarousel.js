@@ -138,11 +138,11 @@ function initEventListener() {
     document.getElementById('caroucel').children[0].addEventListener('click', function () {
         preImage();
     });
-    document.getElementById('caroucel').children[document.getElementById('caroucel').children.length - 1].addEventListener('click', function () {
+    document.getElementById('caroucel').children[document.getElementById('caroucel')
+    .children.length - 1].addEventListener('click', function () {
         nextImage();
     });
 }
-
 
 initEventListener();
 initCaroucel();
