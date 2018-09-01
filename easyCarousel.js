@@ -5,7 +5,7 @@ let imgWidth = document.getElementById('caroucel').offsetWidth;
 let imgIndex = 0;
 let autoPlayInterval;
 let animate_interval;
-let isDisabled = false; //防止用户过快的连续点击
+let isDisabled = false; //防止用户过快的连续点击切换图片
 
 //初始化函数
 function initCaroucel() {
@@ -14,6 +14,12 @@ function initCaroucel() {
     appendNode(ul);
     autoPlay(ul);
 
+}
+
+//添加节点
+function appendNode(ul) {
+    let cloneNode = ul.children[0].cloneNode(true);
+    ul.appendChild(cloneNode);
 }
 
 //自动播放函数
@@ -29,25 +35,6 @@ function autoPlay(ul) {
         setBg();
         console.log(imgIndex);
     }, 3000);
-}
-//添加节点
-function appendNode(ul) {
-    let cloneNode = ul.children[0].cloneNode(true);
-    ul.appendChild(cloneNode);
-}
-
-//设置索引原点背景颜色
-function setBg() {
-    let children = document.getElementById("indexBox").children
-    for (let i = 0; i < children.length; i++) {
-        children[i].style.backgroundColor = "#c5c8ce";
-    }
-    if (imgIndex == 5) {
-        children[0].style.backgroundColor = "#2db7f5";
-    } else {
-        children[imgIndex].style.backgroundColor = "#2db7f5";
-    }
-
 }
 
 function animate(ele) {
@@ -73,6 +60,21 @@ function animate(ele) {
     }, 1);
 }
 
+//设置页面下方小圆圈的背景颜色
+function setBg() {
+    let children = document.getElementById("indexBox").children
+    for (let i = 0; i < children.length; i++) {
+        children[i].style.backgroundColor = "#c5c8ce";
+    }
+    if (imgIndex == 5) {
+        children[0].style.backgroundColor = "#2db7f5";
+    } else {
+        children[imgIndex].style.backgroundColor = "#2db7f5";
+    }
+
+}
+
+//切换到前一张图片
 function preImage() {
     if (!isDisabled) {
         isDisabled = true;
@@ -90,6 +92,7 @@ function preImage() {
     }
 }
 
+//切换到后一张图片
 function nextImage() {
     if (!isDisabled) {
         isDisabled = true;
