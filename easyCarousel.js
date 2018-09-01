@@ -92,7 +92,7 @@ function preImage() {
         let timeOut = setTimeout(()=>{
             isDisabled = false;
             clearTimeout(timeOut);
-        },500);
+        },1000);
     }
 }
 function nextImage() {
@@ -108,7 +108,7 @@ function nextImage() {
         let timeOut = setTimeout(()=>{
             isDisabled = false;
             clearTimeout(timeOut);
-        },500);
+        },1000);
     }
 }
 
@@ -127,6 +127,16 @@ document.getElementById('caroucel').addEventListener('mouseout', function(){
     let ul = document.getElementById('ul');
     autoPlay(ul);
 });
+
+for(let i=0; i<document.getElementById('indexBox').children.length; i++){
+    document.getElementById('indexBox').children[i].addEventListener('mouseover', function(){
+        document.getElementById('ul').style.left = (-i * imgWidth) + 'px';
+        imgIndex = i;
+        setBg();
+    });
+}
+
+
 document.getElementById('caroucel').children[0].addEventListener('click', function(){
     preImage();
 });
