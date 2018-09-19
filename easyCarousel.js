@@ -6,6 +6,7 @@ let imgIndex = 0;
 let autoPlayInterval;
 let animate_interval;
 let isDisabled = false; //防止用户过快的连续点击切换图片
+let imgTotal = 3;
 
 //初始化函数
 function initCaroucel() {
@@ -34,16 +35,16 @@ function autoPlay(ul) {
         }
         setBg();
         console.log(imgIndex);
-    }, 3000);
+    }, 5000);
 }
 
 function animate(ele) {
-    if (imgIndex == 5 && direction == "left") {
+    if (imgIndex == imgTotal && direction == "left") {
         ele.style.left = 0 + "px";
         imgIndex = 0;
     }
     if (imgIndex == 0 && direction == "right") {
-        imgIndex = 5;
+        imgIndex = imgTotal;
         ele.style.left = (-imgIndex * imgWidth) + "px";
     }
     clearInterval(animate_interval);
@@ -51,6 +52,20 @@ function animate(ele) {
     let sumStep = 0;
     animate_interval = setInterval(() => {
         if (Math.abs(sumStep) < imgWidth) {
+            if(imgWidth - Math.abs(sumStep)<10){
+                if(imgWidth - Math.abs(sumStep)<1){
+                    if(Math.abs(speed) == 10){
+                        speed = speed/100;
+                    }else if(Math.abs(speed) == 1){
+                        speed = speed/10;
+                    }
+                }else{
+                    if(Math.abs(speed) == 10){
+                        speed = speed/10;
+                    }
+                }
+            }
+            console.log(speed);
             ele.style.left = ele.offsetLeft + speed + "px";
             sumStep += speed;
         } else {
@@ -66,7 +81,7 @@ function setBg() {
     for (let i = 0; i < children.length; i++) {
         children[i].style.backgroundColor = "#c5c8ce";
     }
-    if (imgIndex == 5) {
+    if (imgIndex == imgTotal) {
         children[0].style.backgroundColor = "#2db7f5";
     } else {
         children[imgIndex].style.backgroundColor = "#2db7f5";

@@ -13,7 +13,7 @@ html, body{
     position: relative;
 }
 .caroucel-container{
-    width: 1000px;
+    width: 70%;
     height: 60vh;
     background-color: blanchedalmond;
     position: absolute;
@@ -27,7 +27,7 @@ html, body{
     -o-transform: translate(-50%, -50%);
 }
 #ul{
-    width: 6000px;
+    width: 400%;
     height: 60vh;
     list-style-type: none;
     position: absolute;
@@ -48,7 +48,7 @@ html, body{
     -o-transform: translateX(-50%);
 }
 #ul>li{
-    width: 1000px;
+    width: calc(100% / 4);
     height: 60vh;
     float: left;
     overflow: hidden;
